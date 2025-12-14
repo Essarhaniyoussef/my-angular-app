@@ -1,0 +1,113 @@
+<div class="products-container">
+
+  <!-- ===== WELCOME BANNER ===== -->
+  <div class="welcome-banner" *ngIf="currentUserName">
+    <div class="welcome-text">
+      <h3>Hello {{ currentUserName }} 👋</h3>
+      <p>Welcome! Ready to explore and add products to your cart?</p>
+    </div>
+
+    <button class="logout-btn" (click)="logout()">
+      Logout
+    </button>
+  </div>
+
+  <!-- ===== ADD / EDIT PRODUCT FORM ===== -->
+  <div class="product-form" *ngIf="userService.isAdmin()">
+    <h2>{{ editingProductId ? 'Edit Product' : 'Add Product' }}</h2>
+
+    <input type="text" [(ngModel)]="newProduct.name" placeholder="Product Name">
+    <input type="number" [(ngModel)]="newProduct.price" placeholder="Price" min="0">
+    <input type="number" [(ngModel)]="newProduct.quantity" placeholder="Quantity" min="0">
+
+    <div class="form-buttons">
+      <button 
+        class="add-btn" 
+        *ngIf="!editingProductId && userService.isAdmin()" 
+        (click)="addProduct()">
+        Add Product
+      </button>
+
+      <button 
+        class="edit-btn" 
+        *ngIf="editingProductId && userService.isAdmin()" 
+        (click)="updateProduct()">
+        Update
+      </button>
+
+      <button 
+        class="cancel-btn" 
+        *ngIf="editingProductId && userService.isAdmin()" 
+        (click)="cancelEdit()">
+        Cancel
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ===== PRODUCTS TABLE ===== -->
+  <h2 class="products-title">Products</h2>
+  <table class="products-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price (MAD)</th>
+        <th>Quantity</th>
+        <th>Add to Cart</th>
+        <th *ngIf="userService.isAdmin()">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of products">
+        <td>{{ p.name }}</td>
+        <td>{{ p.price }} MAD</td>
+        <td>
+          <div class="qty-control">
+            <button (click)="decrementQty(p)">-</button>
+            <span>{{ p.selectedQty || 0 }}</span>
+            <button (click)="incrementQty(p)">+</button>
+          </div>
+        </td>
+        <td>
+          <button class="add-cart-btn" (click)="addToCart(p)">Add</button>
+        </td>
+        <td *ngIf="userService.isAdmin()">
+          <button class="edit-btn" (click)="editProduct(p)">Edit</button>
+          <button class="delete-btn" (click)="deleteProduct(p.id!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ===== CART / INVOICE ===== -->
+  <div *ngIf="cart.length > 0" class="invoice-section">
+    <h2 class="invoice-title">Invoice</h2>
+    <table class="invoice-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total (MAD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of cart">
+          <td>{{ c.name }}</td>
+          <td>{{ c.price }} MAD</td>
+          <td>{{ c.selectedQty }}</td>
+          <td>{{ c.price * c.selectedQty! }} MAD</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Grand Total</td>
+          <td>{{ grandTotal() }} MAD</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <button class="generate-btn" (click)="generatePDF()">Generate Invoice PDF</button>
+  </div>
+
+</div>

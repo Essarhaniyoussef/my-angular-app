@@ -1,0 +1,276 @@
+.products-container {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #28a745;
+  padding-bottom: 5px;
+}
+
+/* ===== ADD / EDIT PRODUCT FORM ===== */
+.product-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  background: #f7f7f7;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.product-form h2 {
+  flex: 0 0 auto;
+  margin-right: 15px;
+}
+
+.product-form input {
+  padding: 8px;
+  font-size: 14px;
+  flex: 1 1 180px;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-left: auto; /* Push buttons to the right */
+}
+
+.form-buttons button {
+  padding: 8px 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.add-btn {
+  background-color: #28a745;
+}
+
+.add-btn:hover {
+  background-color: #218838;
+}
+
+.edit-btn {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.edit-btn:hover {
+  background-color: #e0a800;
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+}
+
+.cancel-btn:hover {
+  background-color: #c82333;
+}
+
+/* ===== TABLES ===== */
+.products-table, .invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
+}
+
+.products-table th, .products-table td,
+.invoice-table th, .invoice-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.products-table th, .invoice-table th {
+  background-color: #28a745;
+  color: white;
+}
+
+.products-table td button {
+  padding: 5px 10px;
+  margin: 2px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.add-cart-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.add-cart-btn:hover {
+  background-color: #218838;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+.generate-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #17a2b8;
+  color: white;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.generate-btn:hover {
+  background-color: #117a8b;
+}
+
+/* ===== Quantity controls ===== */
+.qty-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-control button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.qty-control button:hover {
+  background-color: #218838;
+}
+
+.qty-control span {
+  margin: 0 8px;
+  min-width: 25px;
+  display: inline-block;
+  text-align: center;
+}
+
+/* ===== Invoice section visibility handled by *ngIf ===== */
+.invoice-section {
+  display: block;
+}
+
+/* ===== Responsive ===== */
+@media screen and (max-width: 768px) {
+  .product-form {
+    flex-direction: column;
+  }
+
+  .products-table, .invoice-table {
+    font-size: 14px;
+  }
+}
+
+/* .welcome-banner {
+  background-color: #28a745;
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.welcome-banner h3 {
+  margin: 0 0 5px 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.welcome-banner p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+} */
+
+.welcome-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #28a745, #218838);
+  color: #fff;
+  padding: 20px 26px;
+  border-radius: 14px;
+  margin-bottom: 28px;
+  box-shadow: 0 10px 25px rgba(40, 167, 69, 0.35);
+  animation: slideDown 0.5s ease;
+}
+
+.welcome-text h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.welcome-text p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Logout Button */
+.welcome-banner .logout-btn {
+  background: #fff;
+  color: #28a745;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.welcome-banner .logout-btn:hover {
+  background: #f1f1f1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .welcome-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .welcome-banner .logout-btn {
+    align-self: flex-end;
+  }
+}
+
+

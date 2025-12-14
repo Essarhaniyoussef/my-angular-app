@@ -1,0 +1,110 @@
+/* GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* NAVBAR */
+.navbar {
+  height: 70px;
+  padding: 0 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.login-btn {
+  background: #28a745;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(40,167,69,0.4);
+}
+
+/* HERO */
+.hero {
+  height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background: #f8f9fa;
+  animation: fadeUp 0.8s ease;
+}
+
+.hero h1 {
+  font-size: 44px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 18px;
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 640px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+
+/* CTA BUTTON */
+.cta-btn {
+  background: #28a745;
+  color: #fff;
+  padding: 16px 36px;
+  border-radius: 40px;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: #218838;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(40,167,69,0.45);
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+}
